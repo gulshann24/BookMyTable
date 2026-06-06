@@ -1,4 +1,5 @@
-# L'Gran Restaurant Platform — v2.0
+# BookMyTable
+BookMyTable is a full-stack restaurant discovery, table reservation, and food delivery platform. Users can browse restaurants, reserve tables, order food, filter Veg/Non-Veg menus, manage carts, and switch between Dark/Light modes. Built using HTML, CSS, JavaScript, FastAPI, and SQLite.
 
 Python + FastAPI backend with SQLite for the L'Gran restaurant discovery & booking website.
 
