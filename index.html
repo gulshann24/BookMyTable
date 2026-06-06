@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyTable — Discover & Reserve</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Overpass:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="left-links" type="none">
+                <li><a href="#about"       class="link">about us</a></li>
+                <li><a href="#restaurants" class="link">restaurants</a></li>
+                <li><a href="#menu"        class="link">menu</a></li>
+                <li><a href="#gallery"     class="link">gallery</a></li>
+            </ul>
+
+            <ul class="right-links" type="none">
+                <li><a href="#booking"         class="link">bookings</a></li>
+                <li><a href="#contact-section" class="link">contact</a></li>
+                <li><a href="#blog"            class="link">blog</a></li>
+            </ul>
+
+            <div class="auth-controls" id="auth-controls"></div>
+
+            <div class="menu-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <section class="home show">
+        <div class="overlay">
+            <div class="home-content">
+                <p class="home-eyebrow">Curated Dining Experiences</p>
+                <h1>Discover &amp; Reserve<br><em>Your Perfect Table</em></h1>
+                <p class="home-sub">Browse top-rated restaurants, explore menus, and secure your table — all in one place.</p>
+                <div class="booking-box">
+                    <button onclick="document.getElementById('restaurants').scrollIntoView({behavior:'smooth'})">
+                        <i class='bx bx-search-alt'></i> Browse Restaurants
+                    </button>
+                    <button class="btn-outline" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+                        <i class='bx bx-calendar-check'></i> Quick Book
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-text">
+            <div class="title">
+                <img src="images/yellow wave.png" alt="">
+                <p>ABOUT <span>L'Gran</span></p>
+                <img src="images/yellow wave.png" alt="">
+            </div>
+            <p class="des">
+                Welcome to L'Gran — your premium restaurant discovery and reservation platform.
+                We partner with the finest dining establishments so you can browse, compare,
+                and book the perfect table without the hassle.
+            </p>
+            <a href="#restaurants">
+                Explore Restaurants <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- RESTAURANTS -->
+    <section class="restaurants-section" id="restaurants">
+        <div class="restaurants-header">
+            <div class="title">
+                <p>DISCOVER <span>Restaurants</span></p>
+            </div>
+            <p class="section-sub">Find your perfect dining experience</p>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="filter-bar">
+            <div class="search-wrap">
+                <i class='bx bx-search'></i>
+                <input
+                    type="text"
+                    id="restaurant-search"
+                    placeholder="Search restaurant, cuisine, location…"
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="filter-selects">
+                <div class="select-wrap">
+                    <i class='bx bx-map'></i>
+                    <select id="city-filter" title="Select City">
+                        <option value="">All Cities</option>
+                    </select>
+                </div>
+
+                <div class="select-wrap">
+                    <i class='bx bx-bowl-hot'></i>
+                    <select id="cuisine-filter" title="Select Cuisine">
+                        <option value="">All Cuisines</option>
+                    </select>
+                </div>
+
+                <div class="select-wrap">
+                    <i class='bx bx-sort'></i>
+                    <select id="sort-filter" title="Sort">
+                        <option value="rating">Top Rated</option>
+                        <option value="name">A-Z</option>
+                    </select>
+                </div>
+
+                <label class="toggle-label">
+                    <input type="checkbox" id="open-only-filter">
+                    <span class="toggle-track"></span>
+                    <span class="toggle-text">Open Now</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Restaurant Grid -->
+        <div class="restaurant-grid" id="restaurant-grid">
+            <!-- Cards injected by script.js -->
+        </div>
+
+        <!-- Loading / Empty States -->
+        <div class="loading-spinner" id="restaurants-loading">
+            <div class="spinner"></div>
+            <p>Finding the finest restaurants…</p>
+        </div>
+
+        <div class="empty-state" id="restaurants-empty" >
+            <i class='bx bx-bowl-hot'></i>
+            <h3>No restaurants found</h3>
+            <p>Try adjusting your filters or search term.</p>
+            <button onclick="resetFilters()">Clear Filters</button>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <h1>Our Signature Menu</h1>
+
+        <div class="menu-category">
+            <h2>Breakfast</h2>
+            <div class="menu-items">
+                <div class="item"><h3>Masala Dosa</h3><p>Crispy dosa filled with spiced potato</p><span>₹80</span></div>
+                <div class="item"><h3>Idli Sambar</h3><p>Steamed rice cakes with sambar and chutney</p><span>₹60</span></div>
+                <div class="item"><h3>Aloo Paratha</h3><p>Stuffed paratha served with curd and pickle</p><span>₹70</span></div>
+                <div class="item"><h3>Poha</h3><p>Flattened rice cooked with spices and vegetables</p><span>₹50</span></div>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Lunch</h2>
+            <div class="menu-items">
+                <div class="item"><h3>Paneer Butter Masala</h3><p>Paneer cooked in rich tomato gravy</p><span>₹180</span></div>
+                <div class="item"><h3>Veg Biryani</h3><p>Rice cooked with vegetables and spices</p><span>₹150</span></div>
+                <div class="item"><h3>Dal Tadka</h3><p>Yellow dal tempered with spices</p><span>₹120</span></div>
+                <div class="item"><h3>Butter Naan</h3><p>Soft naan with butter</p><span>₹40</span></div>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Dinner</h2>
+            <div class="menu-items">
+                <div class="item"><h3>Chicken Curry</h3><p>Traditional Indian chicken curry</p><span>₹220</span></div>
+                <div class="item"><h3>Paneer Tikka</h3><p>Grilled paneer with spices</p><span>₹200</span></div>
+                <div class="item"><h3>Veg Fried Rice</h3><p>Rice stir-fried with vegetables</p><span>₹140</span></div>
+                <div class="item"><h3>Tandoori Roti</h3><p>Whole wheat roti cooked in tandoor</p><span>₹25</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="title">
+            <img src="images/yellow wave.png" alt="">
+            <p>GALLERY</p>
+            <img src="images/yellow wave.png" alt="">
+        </div>
+        <div class="gallery-image">
+            <div>
+                <img src="images/cofee.jpg" alt="Coffee">
+                <img src="images/pizza.png" alt="Pizza">
+                <img src="images/Burger.png" alt="Burger">
+                <img src="images/sandwich.png" alt="Sandwich">
+            </div>
+            <div>
+                <img src="images/ice-ceam.png" alt="Ice Cream">
+                <img src="images/noodle.png" alt="Noodles">
+                <img src="images/sandwich.png" alt="Sandwich">
+                <img src="images/cutlet.png" alt="Cutlet">
+            </div>
+            <div>
+                <img src="images/dosa.png" alt="Dosa">
+                <img src="images/aloo-pratha.png" alt="Aloo Paratha">
+                <img src="images/paneer.png" alt="Paneer">
+                <img src="images/dal-makhani.png" alt="Dal Makhani">
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking" id="booking">
+        <div class="title">
+            <p>RESERVE <span>Your Table</span></p>
+        </div>
+        <p class="sub-title">Book Your Table Now And Have A Great Meal!</p>
+
+        <!-- Selected restaurant banner (shown when selected from card) -->
+        <div class="selected-restaurant-banner" id="selected-restaurant-banner" >
+            <div class="srb-inner">
+                <i class='bx bxs-store'></i>
+                <div>
+                    <p class="srb-label">Booking at</p>
+                    <p class="srb-name" id="srb-name">—</p>
+                </div>
+                <button class="srb-clear" onclick="clearSelectedRestaurant()">
+                    <i class='bx bx-x'></i> Change
+                </button>
+            </div>
+        </div>
+
+        <form action="" id="booking-form">
+            <input type="hidden" id="booking-restaurant-id"   name="restaurant_id">
+            <input type="hidden" id="booking-restaurant-name" name="restaurant_name">
+
+            <div class="first">
+                <div class="input">
+                    <p>Your full name?</p>
+                    <input type="text" id="b-name" placeholder="Write your name here…">
+                </div>
+                <div class="input">
+                    <p>Your email address?</p>
+                    <input type="email" id="b-email" placeholder="Write your email here…">
+                </div>
+            </div>
+            <div class="mid">
+                <div class="input">
+                    <p>Number of guests?</p>
+                    <div class="input-i">
+                        <input type="number" id="b-guests" min="1" max="20" placeholder="2 people">
+                        <i class='bx bxs-down-arrow'></i>
+                    </div>
+                </div>
+                <div class="input">
+                    <p>What time?</p>
+                    <div class="input-i">
+                        <input type="time" id="b-time" placeholder="Time">
+                    </div>
+                </div>
+            </div>
+            <div class="last">
+                <div class="input">
+                    <p>What is the date?</p>
+                    <div class="input-i">
+                        <input type="date" id="b-date" name="date" placeholder="Date">
+                    </div>
+                </div>
+                <div class="input">
+                    <p>Your phone number?</p>
+                    <input type="tel" id="b-phone" placeholder="Write your number here…">
+                </div>
+            </div>
+            <button class="btn" type="submit">
+                <i class='bx bx-calendar-check'></i> Confirm Reservation
+            </button>
+        </form>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Have any questions? Reach out and we'll get back to you as soon as possible!</p>
+
+            <form action="" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email Address">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Your Message" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+                <div class="social-icons">
+                    <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                    <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" title="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://facebook.com/yourusername" target="_blank" rel="noopener noreferrer" title="Facebook"><i class='bx bxl-facebook'></i></a>
+                    <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" title="Twitter"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="title"><p>BLOG</p></div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <h3>Top 5 Indian Dishes You Must Try</h3>
+                    <p>Explore the rich flavors of Indian cuisine with our curated list of must-try dishes for every food lover.</p>
+                    <a href="#" class="link">Read More →</a>
+                </div>
+                <div class="blog-card">
+                    <h3>How to Book the Perfect Table</h3>
+                    <p>Tips and tricks for securing your ideal dining experience — timing, special requests, and more.</p>
+                    <a href="#" class="link">Read More →</a>
+                </div>
+                <div class="blog-card">
+                    <h3>The Story Behind BookMyTable</h3>
+                    <p>From humble beginnings to a celebrated dining destination — discover the journey of our restaurant.</p>
+                    <a href="#" class="link">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
